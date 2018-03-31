@@ -355,7 +355,7 @@ abstract class BaseEntity extends Creature{
 		return false;
 	}
 
-	public function move(float $dx, float $dy, float $dz) : bool{
+	public function move(float $dx, float $dy, float $dz) : void{
 		Timings::$entityMoveTimer->startTiming();
 
 		$movX = $dx;
@@ -386,7 +386,7 @@ abstract class BaseEntity extends Creature{
 		$this->updateFallState($dy, $this->onGround);
 
 		Timings::$entityMoveTimer->stopTiming();
-		return true;
+		return;
 	}
 
 	public function targetOption(Creature $creature, float $distance) : bool{
