@@ -31,7 +31,7 @@ use pocketmine\entity\Creature;
 use pocketmine\entity\Entity;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\event\entity\EntityDamageEvent;
-use pocketmine\event\Timings;
+use pocketmine\Timings;
 use pocketmine\level\Level;
 use pocketmine\math\Math;
 use pocketmine\math\Vector3;
@@ -304,7 +304,7 @@ abstract class BaseEntity extends Creature{
 	}
 
 	public function entityBaseTick(int $tickDiff = 1) : bool{
-		Timings::$timerEntityBaseTick->startTiming();
+		// Timing::$timerEntityBaseTick->startTiming();
 		// check if it needs to despawn
 
 		$hasUpdate = Entity::entityBaseTick($tickDiff);
@@ -312,7 +312,7 @@ abstract class BaseEntity extends Creature{
 		// Checking this first because there's no reason to keep going if we know
 		// we're going to despawn the entity.
 		if($this->checkDespawn()){
-			Timings::$timerEntityBaseTick->stopTiming();
+			// Timings::$timerEntityBaseTick->stopTiming();
 			return false;
 		}
 
@@ -335,7 +335,7 @@ abstract class BaseEntity extends Creature{
 			$this->panicTick($tickDiff);
 		}
 
-		Timings::$timerEntityBaseTick->stopTiming();
+		// Timings::$timerEntityBaseTick->stopTiming();
 		return $hasUpdate;
 	}
 
@@ -356,7 +356,7 @@ abstract class BaseEntity extends Creature{
 	}
 
 	public function move(float $dx, float $dy, float $dz) : void{
-		Timings::$entityMoveTimer->startTiming();
+		// Timings::$entityMoveTimer->startTiming();
 
 		$movX = $dx;
 		$movY = $dy;
@@ -385,7 +385,7 @@ abstract class BaseEntity extends Creature{
 		$this->checkGroundState($movX, $movY, $movZ, $dx, $dy, $dz);
 		$this->updateFallState($dy, $this->onGround);
 
-		Timings::$entityMoveTimer->stopTiming();
+		// Timings::$entityMoveTimer->stopTiming();
 		return;
 	}
 
