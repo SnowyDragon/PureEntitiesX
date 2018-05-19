@@ -246,7 +246,7 @@ abstract class BaseEntity extends Creature{
 		}
 	}
 
-	public function updateMovement(){
+	public function updateMovement(bool $teleport = false): void{
 		if(!$this->isClosed() && $this->getLevel() !== null){
 			parent::updateMovement();
 		}
