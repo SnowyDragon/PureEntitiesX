@@ -299,7 +299,7 @@ abstract class BaseEntity extends Creature{
 		$this->checkAttackByTamedEntities($source);
 	}
 
-	public function knockBack(Entity $attacker, float $damage, float $x, float $z, float $base = 0.4){
+	public function knockBack(Entity $attacker, float $damage, float $x, float $z, float $base = 0.4): void{
 
 	}
 
@@ -410,7 +410,7 @@ abstract class BaseEntity extends Creature{
 	 *
 	 * @param EntityDamageEvent $source the event that has been raised
 	 */
-	protected function checkAttackByTamedEntities(EntityDamageEvent $source){
+	protected function checkAttackByTamedEntities(EntityDamageEvent $source): void{
 		// next: if the player has any tamed entities - they will attack this entity too - but only when not already
 		// having a valid monster target
 		if($source instanceof EntityDamageByEntityEvent){
