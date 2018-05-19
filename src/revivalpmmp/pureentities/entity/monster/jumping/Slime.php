@@ -39,7 +39,7 @@ class Slime extends JumpingMonster{
 	private $cubeDimensions = array(0.51, 1.02, 2.04);
 
 
-	public function initEntity(){
+	public function initEntity(): void{
 		parent::initEntity();
 		if($this->cubeSize == -1){
 			$this->cubeSize = mt_rand(0, 2);
@@ -53,14 +53,14 @@ class Slime extends JumpingMonster{
 		$this->setDamage([0, 2, 2, 3]);
 	}
 
-	public function saveNBT(){
+	public function saveNBT(): void{
 		if(PluginConfiguration::getInstance()->getEnableNBT()){
 			parent::saveNBT();
 			$this->namedtag->setByte(NBTConst::NBT_KEY_CUBE_SIZE, $this->cubeSize);
 		}
 	}
 
-	public function loadNBT(){
+	public function loadNBT(): void{
 		if(PluginConfiguration::getInstance()->getEnableNBT()){
 			parent::loadNBT();
 			if(($cubeSize = $this->namedtag->getByte(NBTConst::NBT_KEY_CUBE_SIZE, NBTConst::NBT_INVALID_BYTE)) !== NBTConst::NBT_INVALID_BYTE){

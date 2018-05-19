@@ -42,7 +42,7 @@ class Creeper extends WalkingMonster implements Explosive{
 
 	private $powered = 0;
 
-	public function initEntity(){
+	public function initEntity(): void{
 		parent::initEntity();
 		$this->width = Data::WIDTHS[self::NETWORK_ID];
 		$this->height = Data::HEIGHTS[self::NETWORK_ID];
@@ -59,7 +59,7 @@ class Creeper extends WalkingMonster implements Explosive{
 		$this->getDataPropertyManager()->setPropertyValue(self::DATA_POWERED, self::DATA_TYPE_BYTE, $this->powered);
 	}
 
-	public function loadNBT(){
+	public function loadNBT(): void{
 		if(PluginConfiguration::getInstance()->getEnableNBT()){
 			parent::loadNBT();
 			$this->powered = $this->namedtag->getInt(NBTConst::NBT_KEY_POWERED, 0);
@@ -67,7 +67,7 @@ class Creeper extends WalkingMonster implements Explosive{
 		}
 	}
 
-	public function saveNBT(){
+	public function saveNBT(): void{
 		if(PluginConfiguration::getInstance()->getEnableNBT()){
 			parent::saveNBT();
 			$this->namedtag->setInt("powered", $this->powered);

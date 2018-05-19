@@ -37,7 +37,7 @@ class Mooshroom extends WalkingAnimal implements IntfCanBreed, IntfCanInteract, 
 	use Shearable, Breedable, Feedable;
 	const NETWORK_ID = Data::NETWORK_IDS["mooshroom"];
 
-	public function initEntity(){
+	public function initEntity(): void{
 		parent::initEntity();
 		$this->width = Data::WIDTHS[self::NETWORK_ID];
 		$this->height = Data::HEIGHTS[self::NETWORK_ID];
@@ -52,7 +52,7 @@ class Mooshroom extends WalkingAnimal implements IntfCanBreed, IntfCanInteract, 
 		return "Mooshroom";
 	}
 
-	public function loadNBT(){
+	public function loadNBT(): void{
 		if(PluginConfiguration::getInstance()->getEnableNBT()){
 			parent::loadNBT();
 			if(($sheared = $this->namedtag->getByte(NBTConst::NBT_KEY_SHEARED, NBTConst::NBT_INVALID_BYTE) != NBTConst::NBT_INVALID_BYTE)){
@@ -61,7 +61,7 @@ class Mooshroom extends WalkingAnimal implements IntfCanBreed, IntfCanInteract, 
 		}
 	}
 
-	public function saveNBT(){
+	public function saveNBT(): void{
 		if(PluginConfiguration::getInstance()->getEnableNBT()){
 			parent::saveNBT();
 			$this->breedableClass->saveNBT();
